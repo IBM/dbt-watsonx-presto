@@ -4,9 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    rebase-strategy: "disabled"
+    rebase-strategy: "auto"
