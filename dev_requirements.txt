@@ -1,7 +1,7 @@
 wheel
 twine==5.1.1
 freezegun==1.5.1
-pytest==8.3.2
+pytest==8.3.4
 mock>=5.1.0
 flake8>=7.1.1
 pytz==2024.1
