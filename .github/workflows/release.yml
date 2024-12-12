@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5.3.0
         with:
           python-version: '3.8'
 
@@ -36,7 +36,7 @@ jobs:
     needs: Test
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5.3.0
         with:
           python-version: '3.8'
 
@@ -90,7 +90,7 @@ jobs:
     environment: PypiProd
     steps:
       - name: Setup Python
-        uses: actions/setup-python@v2.2.2
+        uses: actions/setup-python@v5.3.0
         with: 
           python-version: '3.8'
           
