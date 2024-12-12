@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.8'
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Test release
         run: |
@@ -40,7 +40,7 @@ jobs:
         with:
           python-version: '3.8'
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Bumping version
         run: |
@@ -94,7 +94,7 @@ jobs:
         with: 
           python-version: '3.8'
           
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: v${{env.version_number}}
       
