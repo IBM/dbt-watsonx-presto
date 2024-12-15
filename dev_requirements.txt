@@ -11,5 +11,5 @@ pytest-xdist==3.5.0
 flaky>=3.8.0,<4
 
 # Test requirements
-dbt-tests-adapter~=1.9.2
+dbt-tests-adapter~=1.10.4
 pygments>=2.18.0 # not directly required, pinned by Snyk to avoid a vulnerability
