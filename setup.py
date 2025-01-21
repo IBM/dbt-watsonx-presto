@@ -48,7 +48,7 @@ setup(
         ]
     },
     install_requires=[
-        'dbt-core~=1.8.6',
+        'dbt-core>=1.8.6,<1.10.0',
         'presto-python-client==0.8.4',
     ],
     classifiers=[
