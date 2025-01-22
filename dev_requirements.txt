@@ -6,7 +6,7 @@ mock>=5.1.0
 flake8>=7.1.1
 pytz==2024.2
 bumpversion==0.6.0
-tox==4.23.2
+tox==4.24.1
 pytest-xdist==3.6.1
 flaky>=3.8.0,<4
 
