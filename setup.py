@@ -12,9 +12,9 @@ package_name = "dbt-watsonx-presto"
 
 
 # get this from a separate file
-def _dbt_presto_version():
+def _dbt_watsonx_presto_version():
     _version_path = os.path.join(
-        this_directory, 'dbt', 'adapters', 'presto', '__version__.py'
+        this_directory, 'dbt', 'adapters', 'watsonx_presto', '__version__.py'
     )
     _version_pattern = r'''version\s*=\s*["'](.+)["']'''
     with open(_version_path) as f:
@@ -24,7 +24,7 @@ def _dbt_presto_version():
         return match.group(1)
 
 
-package_version = _dbt_presto_version()
+package_version = _dbt_watsonx_presto_version()
 description = """The Presto adapter plugin for dbt (data build tool)"""
 
 setup(
@@ -41,14 +41,14 @@ setup(
     packages=find_namespace_packages(include=['dbt', 'dbt.*']),
     package_data={
         'dbt': [
-            'include/presto/dbt_project.yml',
-            'include/presto/sample_profiles.yml',
-            'include/presto/macros/*.sql',
-            'include/presto/macros/*/*.sql',
+            'include/watsonx_presto/dbt_project.yml',
+            'include/watsonx_presto/sample_profiles.yml',
+            'include/watsonx_presto/macros/*.sql',
+            'include/watsonx_presto/macros/*/*.sql',
         ]
     },
     install_requires=[
-        'dbt-core~=1.8.6',
+        'dbt-core>=1.8.0',
         'presto-python-client==0.8.4',
     ],
     classifiers=[
@@ -56,10 +56,10 @@ setup(
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.9",
 )

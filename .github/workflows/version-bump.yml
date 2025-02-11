@@ -65,7 +65,7 @@ jobs:
 
       - name: Bump version
         run: |
-          echo -en "version = \"${{ github.event.inputs.version_number }}\"\n"  > dbt/adapters/presto/__version__.py
+          echo -en "version = \"${{ github.event.inputs.version_number }}\"\n"  > dbt/adapters/watsonx_presto/__version__.py
           git status
 
       - name: Run changie

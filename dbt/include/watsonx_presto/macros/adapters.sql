@@ -3,7 +3,7 @@
 -- - list_relations_without_caching
 -- - get_columns_in_relation
 
-{% macro presto__get_columns_in_relation(relation) -%}
+{% macro watsonx_presto__get_columns_in_relation(relation) -%}
   {% call statement('get_columns_in_relation', fetch_result=True) %}
       select
           column_name,
@@ -34,7 +34,7 @@
 {% endmacro %}
 
 
-{% macro presto__list_relations_without_caching(relation) %}
+{% macro watsonx_presto__list_relations_without_caching(relation) %}
 {% set information_schema = relation.information_schema() | lower %}
   {% call statement('list_relations_without_caching', fetch_result=True) -%}
     select
@@ -52,13 +52,13 @@
 {% endmacro %}
 
 
-{% macro presto__reset_csv_table(model, full_refresh, old_relation, agate_table) %}
+{% macro watsonx_presto__reset_csv_table(model, full_refresh, old_relation, agate_table) %}
     {{ adapter.drop_relation(old_relation) }}
     {{ return(create_csv_table(model, agate_table)) }}
 {% endmacro %}
 
 
-{% macro presto__create_csv_table(model, agate_table) %}
+{% macro watsonx_presto__create_csv_table(model, agate_table) %}
   {%- set column_override = model['config'].get('column_types', {}) -%}
   {%- set quote_seed_column = model['config'].get('quote_columns', None) -%}
   {%- set _properties = config.get('properties') -%}
@@ -140,7 +140,7 @@
   correct data type whether it is automatically detected or manually specified.
 #}
 
-{% macro presto__load_csv_rows(model, agate_table) %}
+{% macro watsonx_presto__load_csv_rows(model, agate_table) %}
   {% set column_override = model['config'].get('column_types', {}) %}
   {% set types = [] %}
 
@@ -198,7 +198,7 @@
 {%- endmacro -%}
 
 
-{% macro presto__create_table_as(temporary, relation, sql) -%}
+{% macro watsonx_presto__create_table_as(temporary, relation, sql) -%}
   {%- set _properties = config.get('properties') -%}
   create table {{ relation }}
     {{ properties(_properties) }}
@@ -208,7 +208,7 @@
 {% endmacro %}
 
 
-{% macro presto__create_view_as(relation, sql) -%}
+{% macro watsonx_presto__create_view_as(relation, sql) -%}
   create or replace view
     {{ relation }}
   as
@@ -217,7 +217,7 @@
 {% endmacro %}
 
 
-{% macro presto__drop_relation(relation) -%}
+{% macro watsonx_presto__drop_relation(relation) -%}
   {% call statement('drop_relation', auto_begin=False) -%}
     drop {{ relation.type }} if exists {{ relation }}
   {%- endcall %}
@@ -225,7 +225,7 @@
 
 
 {# see this issue: https://github.com/fishtown-analytics/dbt/issues/2267 #}
-{% macro presto__information_schema_name(database) -%}
+{% macro watsonx_presto__information_schema_name(database) -%}
   {%- if database -%}
     {{ database }}.information_schema
   {%- else -%}
@@ -235,7 +235,7 @@
 
 
 {# On Presto, 'cascade' isn't supported so we have to manually cascade. #}
-{% macro presto__drop_schema(relation) -%}
+{% macro watsonx_presto__drop_schema(relation) -%}
   {% for row in list_relations_without_caching(relation) %}
     {% set rel_db = row[0] %}
     {% set rel_identifier = row[1] %}
@@ -250,19 +250,19 @@
 {% endmacro %}
 
 
-{% macro presto__rename_relation(from_relation, to_relation) -%}
+{% macro watsonx_presto__rename_relation(from_relation, to_relation) -%}
   {% call statement('rename_relation') -%}
     alter {{ from_relation.type }} {{ from_relation }} rename to {{ to_relation }}
   {%- endcall %}
 {% endmacro %}
 
 
-{% macro presto__get_batch_size() %}
+{% macro watsonx_presto__get_batch_size() %}
   {{ return(1000) }}
 {% endmacro %}
 
 
-{% macro presto__list_schemas(database) -%}
+{% macro watsonx_presto__list_schemas(database) -%}
   {% call statement('list_schemas', fetch_result=True, auto_begin=False) %}
     select distinct schema_name
     from {{ information_schema_name(database) }}.schemata
@@ -271,7 +271,7 @@
 {% endmacro %}
 
 
-{% macro presto__check_schema_exists(information_schema, schema) -%}
+{% macro watsonx_presto__check_schema_exists(information_schema, schema) -%}
   {% call statement('check_schema_exists', fetch_result=True, auto_begin=False) -%}
         select count(*)
         from {{ information_schema }}.schemata

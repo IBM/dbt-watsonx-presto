@@ -17,7 +17,7 @@ import prestodb
 from prestodb.transaction import IsolationLevel
 import sqlparse
 
-logger = AdapterLogger("presto")
+logger = AdapterLogger("watsonx_presto")
 
 class CustomConnection(Connection):
     def cursor(self):
@@ -67,7 +67,7 @@ class PrestoCredentials(Credentials):
 
     @property
     def type(self):
-        return 'presto'
+        return 'watsonx_presto'
 
     @property
     def unique_field(self):
@@ -165,7 +165,7 @@ class ConnectionWrapper(object):
 
 
 class PrestoConnectionManager(SQLConnectionManager):
-    TYPE = 'presto'
+    TYPE = 'watsonx_presto'
 
     @contextmanager
     def exception_handler(self, sql):
