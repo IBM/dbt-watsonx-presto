@@ -41,7 +41,7 @@ jobs:
           python-version: '3.11'
 
       - name: Get version
-        run: echo "version_number=$(cat dbt/adapters/presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
+        run: echo "version_number=$(cat dbt/adapters/watsonx_presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
 
       - name: Bumping version
         run: |
@@ -101,7 +101,7 @@ jobs:
           python-version: '3.11'
 
       - name: Get version
-        run: echo "version_number=$(cat dbt/adapters/presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
+        run: echo "version_number=$(cat dbt/adapters/watsonx_presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
 
       - name: Release to pypi
         env:

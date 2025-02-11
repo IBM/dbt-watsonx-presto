@@ -64,7 +64,7 @@ Once you've installed everything, ensure that the dbt command is pointing to the
 which dbt
 ```
 
-This should show the path to dbt inside your virtual environment. Additionally, ensure your [profile]() is set up to connect to your target database. If needed, create a new profile for connecting to a local Presto or watsonx.data instance
+This should show the path to dbt inside your virtual environment. Additionally, ensure your profile is set up to connect to your target database. If needed, create a new profile for connecting to a local Presto or watsonx.data instance
 
 
 ## Testing
