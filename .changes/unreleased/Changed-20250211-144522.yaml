@@ -1,0 +1,6 @@
+kind: Changed
+body: Set default authentication method to 'BasicAuth' and rename 'database' to 'catalog' in DBT profiles for consistency with wxd terminology.
+time: 2025-02-11T14:45:22.389836+05:30
+custom:
+  Author: KNagaVivek
+  PR: "25"

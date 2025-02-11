@@ -57,7 +57,7 @@ class PrestoCredentials(Credentials):
     port: Port
     user: str
     password: Optional[str] = None
-    method: Optional[str] = None
+    method: Optional[str] = "BasicAuth"
     http_headers: Optional[Dict[str, str]] = None
     http_scheme: Optional[str] = None
     ssl_verify: Optional[Union[bool, str]] = True
@@ -200,7 +200,7 @@ class PrestoConnectionManager(SQLConnectionManager):
             return connection
 
         credentials = connection.credentials
-        if credentials.method == 'BasicAuth':
+        if credentials.method.lower() == "BasicAuth".lower():
             auth = prestodb.auth.BasicAuthentication(
                 credentials.user,
                 credentials.password,
