@@ -1,0 +1,6 @@
+kind: Changed
+body: Renamed the `presto` adapter to `watsonx_presto` to resolve DBT compatibility issues
+time: 2025-02-11T23:18:22.104544+05:30
+custom:
+  Author: KNagaVivek
+  PR: "26"

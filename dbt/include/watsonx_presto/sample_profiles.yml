@@ -2,7 +2,7 @@ default:
   outputs:
 
     dev:
-      type: presto
+      type: watsonx_presto
       method: BasicAuth  # one of {none | BasicAuth}
       user: [dev_user]
       password: [password]  # required if method is BasicAuth
@@ -13,7 +13,7 @@ default:
       threads: [1 or more]
 
     prod:
-      type: presto
+      type: watsonx_presto
       method: BasicAuth  # one of {none | BasicAuth}
       user: [prod_user]
       password: [prod_password]  # required if method is BasicAuth

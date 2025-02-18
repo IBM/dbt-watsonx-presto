@@ -1,7 +1,7 @@
 import unittest
 from multiprocessing import get_context
 import dbt.flags as flags
-from dbt.adapters.presto import PrestoAdapter
+from dbt.adapters.watsonx_presto import Watsonx_PrestoAdapter
 
 from .utils import config_from_parts_or_dicts, mock_connection
 
@@ -14,7 +14,7 @@ class TestPrestoAdapter(unittest.TestCase):
         profile_cfg = {
             'outputs': {
                 'test': {
-                    'type': 'presto',
+                    'type': 'watsonx_presto',
                     'catalog': 'prestodb',
                     'host': 'database',
                     'port': 5439,
@@ -45,7 +45,7 @@ class TestPrestoAdapter(unittest.TestCase):
 
     @property
     def adapter(self):
-        self._adapter = PrestoAdapter(self.config, get_context("spawn"))
+        self._adapter = Watsonx_PrestoAdapter(self.config, get_context("spawn"))
         return self._adapter
 
     def test_acquire_connection(self):

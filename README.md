@@ -10,7 +10,7 @@ The `dbt-watsonx-presto` adapter uses [Presto](https://prestodb.io/) as the unde
 
 Transformations defined in dbt are passed to Presto, which executes these SQL queries by translating them into queries specific to the connected systems. Presto then creates tables, builds views, or manipulates data as defined by your dbt project.
 
-This repository is an evolution of the [dbt-presto](https://github.com/dbt-labs/dbt-presto) adapter, specifically designed for seamless compatibility with both [open-source Presto](https://prestodb.io/) and IBM [watsonx.data Presto](https://www.ibm.com/products/watsonx-data) clusters.
+This repository is an evolution of the [dbt-presto](https://github.com/dbt-labs/dbt-presto) adapter, specifically designed for seamless compatibility with both [open-source Presto](https://prestodb.io/) and IBM [watsonx.data Presto](https://www.ibm.com/products/watsonx-data) instances.
 
 
 Read the official documentation for using watsonx.data with dbt-watsonx-presto -
@@ -38,8 +38,8 @@ To connect dbt Core to your Presto clusters, configure the `profiles.yml` file l
 ```
 my_project:
   outputs:
-    dev:
-      type: presto
+    software:
+      type: watsonx_presto
       method: BasicAuth
       user: username
       password: password
@@ -50,8 +50,8 @@ my_project:
       threads: 8
       ssl_verify: path/to/certificate
       
-    prod:
-      type: presto
+    saas:
+      type: watsonx_presto
       method: BasicAuth
       user: username
       password: api_key
@@ -62,9 +62,9 @@ my_project:
       threads: 8
       ssl_verify: true
       
-  target: dev
+  target: software
 ```
-For more detailed instructions on configuring your profiles, refer watsonx.data and presto setup    .
+For more detailed instructions on configuring your profiles, refer [configuring dbt-watsonx-presto](https://ibmdocs-test.dcs.ibm.com/docs/en/SSDZ38_2.1.x_test?topic=presto-configuration-setting-up-your-profile).
 
 #### Presto-Specific Configuration
 For Presto-specific configurations, such as advanced session properties or Presto connectors, consult the Presto Configuration Guide.
