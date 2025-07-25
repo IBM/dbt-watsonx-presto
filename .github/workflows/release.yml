@@ -14,7 +14,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: Test release
         run: |
@@ -38,7 +38,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: Get version
         run: echo "version_number=$(cat dbt/adapters/watsonx_presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
@@ -98,7 +98,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: Get version
         run: echo "version_number=$(cat dbt/adapters/watsonx_presto/__version__.py | sed -n 's/version = "\(.*\)\"/\1/p')" >> $GITHUB_ENV
