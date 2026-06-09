@@ -46,7 +46,7 @@ jobs:
 
       - name: Create and commit changelog on bot PR
         id: bot_changelog
-        uses: emmyoop/changie_bot@v1.0
+        uses: emmyoop/changie_bot@v1.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           commit_author_name: "KNagaVivek"
