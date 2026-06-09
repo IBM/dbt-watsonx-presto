@@ -1,4 +1,4 @@
-FROM fishtownanalytics/dbt:0.15.3
+FROM fishtownanalytics/dbt:0.21.1
 USER root
 
 ENV DBT_DIR /opt/dbt-watsonx-presto
