@@ -5,7 +5,7 @@ jobs:
     environment:
       DBT_INVOCATION_ENV: circle
     docker:
-      - image: fishtownanalytics/test-container:9
+      - image: fishtownanalytics/test-container:12
     steps:
       - checkout
       - run: tox -e flake8,unit
@@ -15,7 +15,7 @@ jobs:
       DBT_INVOCATION_ENV: circle
       DBT_TEST_PRESTO_HOST: presto
     docker:
-      - image: fishtownanalytics/test-container:9
+      - image: fishtownanalytics/test-container:12
       - image: fishtownanalytics/presto:1
         name: presto
     steps:
